@@ -64,13 +64,6 @@ asyncio_default_fixture_loop_scope = "function"
 [tool.setuptools_scm]
 tag_regex = "^v(?P<version>.+)$"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["remnawave*"]
-
-[tool.setuptools.package-dir]
-remnapy = "remnawave"
-
 [build-system]
 requires = ["setuptools>=68", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"

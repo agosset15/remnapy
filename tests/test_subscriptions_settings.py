@@ -1,6 +1,6 @@
 import pytest
 
-from remnawave.models import (
+from remnapy.models import (
     GetSubscriptionSettingsResponseDto,
     UpdateSubscriptionSettingsRequestDto,
     UpdateSubscriptionSettingsResponseDto,

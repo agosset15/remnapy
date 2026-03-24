@@ -2,13 +2,14 @@
 """Quick test to verify all new imports work"""
 
 try:
-    from remnawave.models import (
-        ReorderConfigProfilesRequestDto,
-        ReorderSubscriptionTemplatesRequestDto,
-        ReorderInternalSquadsRequestDto,
-        ReorderExternalSquadsRequestDto,
+    from remnapy.models import (
         GetSubpageConfigByShortUuidResponseDto,
+        ReorderConfigProfilesRequestDto,
+        ReorderExternalSquadsRequestDto,
+        ReorderInternalSquadsRequestDto,
+        ReorderSubscriptionTemplatesRequestDto,
     )
+
     print("✅ Все новые модели успешно импортируются!")
     print("   - ReorderConfigProfilesRequestDto")
     print("   - ReorderSubscriptionTemplatesRequestDto")
