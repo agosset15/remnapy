@@ -197,6 +197,11 @@ class UserResponseDto(BaseModel):
         return self.user_traffic.first_connected_at
 
     @property
+    def first_connected_at(self) -> Optional[datetime]:
+        """New compatibility property"""
+        return self.user_traffic.first_connected_at
+
+    @property
     def last_connected_node_uuid(self) -> Optional[UUID]:
         """Backward compatibility property"""
         return self.user_traffic.last_connected_node_uuid
