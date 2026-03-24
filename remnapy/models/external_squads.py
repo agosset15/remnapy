@@ -5,7 +5,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
-from remnapy.models import CustomRemarksDto, HwidSettingsDto
+from .subscriptions_settings import CustomRemarksDto, HwidSettingsDto
 
 
 class TemplateType(StrEnum):
