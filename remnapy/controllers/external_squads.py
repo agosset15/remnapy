@@ -1,5 +1,7 @@
-from typing import Annotated
+from typing import Annotated, Union
+from uuid import UUID
 
+from rapid_api_client import Path
 from rapid_api_client.annotations import PydanticBody
 
 from remnapy.models import (
@@ -45,18 +47,18 @@ class ExternalSquadsController(BaseController):
     @get("/external-squads/{uuid}", response_class=GetExternalSquadByUuidResponseDto)
     async def get_external_squad_by_uuid(
         self,
-        uuid: str,
-    ) -> GetExternalSquadByUuidResponseDto:
-        """Get external squad by uuid"""
-        ...
+        uuid: Annotated[
+            Union[str, UUID], Path(description="UUID of the external squad")
+        ],
+    ) -> GetExternalSquadByUuidResponseDto: ...
 
     @delete("/external-squads/{uuid}", response_class=DeleteExternalSquadResponseDto)
     async def delete_external_squad(
         self,
-        uuid: str,
-    ) -> DeleteExternalSquadResponseDto:
-        """Delete external squad"""
-        ...
+        uuid: Annotated[
+            Union[str, UUID], Path(description="UUID of the external squad")
+        ],
+    ) -> DeleteExternalSquadResponseDto: ...
 
     @post(
         "/external-squads/{uuid}/bulk-actions/add-users",
@@ -64,10 +66,10 @@ class ExternalSquadsController(BaseController):
     )
     async def add_users_to_external_squad(
         self,
-        uuid: str,
-    ) -> AddUsersToExternalSquadResponseDto:
-        """Add all users to external squad"""
-        ...
+        uuid: Annotated[
+            Union[str, UUID], Path(description="UUID of the external squad")
+        ],
+    ) -> AddUsersToExternalSquadResponseDto: ...
 
     @delete(
         "/external-squads/{uuid}/bulk-actions/remove-users",
@@ -75,10 +77,10 @@ class ExternalSquadsController(BaseController):
     )
     async def remove_users_from_external_squad(
         self,
-        uuid: str,
-    ) -> RemoveUsersFromExternalSquadResponseDto:
-        """Delete users from external squad"""
-        ...
+        uuid: Annotated[
+            Union[str, UUID], Path(description="UUID of the external squad")
+        ],
+    ) -> RemoveUsersFromExternalSquadResponseDto: ...
 
     @post(
         "/external-squads/actions/reorder",
