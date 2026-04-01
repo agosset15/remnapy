@@ -14,7 +14,7 @@ class SubscriptionController(BaseController):
     async def get_subscription_info_by_short_uuid(
         self,
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the user")
+            Union[str, UUID], Path(description="Short UUID of the user", alias="shortUuid")
         ],
     ) -> GetSubscriptionInfoResponseDto:
         """None"""
@@ -24,7 +24,7 @@ class SubscriptionController(BaseController):
     async def get_subscription(
         self,
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the user")
+            Union[str, UUID], Path(description="Short UUID of the user", alias="shortUuid")
         ],
     ) -> str:
         """None"""
@@ -33,9 +33,9 @@ class SubscriptionController(BaseController):
     @get("/sub/{short_uuid}/{client_type}", response_class=str)
     async def get_subscription_by_client_type(
         self,
-        client_type: Annotated[ClientType, Path(description="Client type")],
+        client_type: Annotated[ClientType, Path(description="Client type", alias="clientType")],
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the user")
+            Union[str, UUID], Path(description="Short UUID of the user", alias="shortUuid")
         ],
     ) -> str:
         """None"""
@@ -45,7 +45,7 @@ class SubscriptionController(BaseController):
     async def get_subscription_with_type(
         self,
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the user")
+            Union[str, UUID], Path(description="Short UUID of the user", alias="shortUuid")
         ],
         type: Annotated[
             str,
@@ -56,7 +56,8 @@ class SubscriptionController(BaseController):
         encoded_tag: Annotated[
             str,
             Path(
-                description="Base64 encoded tag for Outline config. This paramter is optional. It is required only when type=ss."
+                description="Base64 encoded tag for Outline config. This paramter is optional. It is required only when type=ss.",
+                alias="encodedTag",
             ),
         ] = "VGVzdGVy",
     ) -> str:

@@ -10,7 +10,11 @@ from remnapy.models import (
     # Legacy models (deprecated)
     GetNodesUsageByRangeResponseDto,
     GetNodeUserUsageByRangeResponseDto,
-    GetStatsNodesRealtimeUsageResponseDto,
+    GetUserUsageByRangeResponseDto,
+
+    # New stats models
+    GetLegacyStatsUserUsageResponseDto,
+    GetLegacyStatsNodesUsersUsageResponseDto,
     GetStatsNodesUsageResponseDto,
     GetStatsNodeUsersUsageResponseDto,
     GetStatsUserUsageResponseDto,
@@ -64,24 +68,6 @@ async def test_legacy_node_user_usage(remnawave):
         assert hasattr(first_item, "node_uuid")
         assert hasattr(first_item, "total")
     assert len(node_user_usage) >= 0
-
-
-@pytest.mark.asyncio
-async def test_stats_nodes_realtime_usage(remnawave):
-    """Test new stats nodes realtime usage endpoint"""
-    realtime_usage = await remnawave.bandwidthstats.get_nodes_realtime_usage()
-    assert isinstance(realtime_usage, GetStatsNodesRealtimeUsageResponseDto)
-    assert hasattr(realtime_usage, "response")
-    assert isinstance(realtime_usage.response, list)
-
-    # Check structure if data exists
-    if realtime_usage.response:
-        first_item = realtime_usage.response[0]
-        assert hasattr(first_item, "node_uuid")
-        assert hasattr(first_item, "node_name")
-        assert hasattr(first_item, "download_bytes")
-        assert hasattr(first_item, "upload_bytes")
-        assert hasattr(first_item, "total_bytes")
 
 
 @pytest.mark.asyncio
@@ -220,20 +206,7 @@ async def test_legacy_stats_nodes_users_usage(remnawave):
 async def test_bandwidth_data_structure(remnawave):
     """Test bandwidth stats data structure validity"""
     start, end = generate_date_range()
-
-    # Get realtime data
-    realtime = await remnawave.bandwidthstats.get_nodes_realtime_usage()
-
-    if realtime.response:
-        # Verify each node has required fields
-        for node in realtime.response:
-            assert isinstance(node.node_uuid, UUID)
-            assert isinstance(node.node_name, str)
-            assert isinstance(node.download_bytes, (int, float))
-            assert isinstance(node.upload_bytes, (int, float))
-            assert isinstance(node.total_bytes, (int, float))
-            assert node.total_bytes >= 0
-
+    
     # Get stats data
     stats = await remnawave.bandwidthstats.get_stats_nodes_usage(
         start=start, end=end, top_nodes_limit=3

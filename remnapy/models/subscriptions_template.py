@@ -31,7 +31,7 @@ class GetTemplateResponseDto(TemplateResponseDto):
 
 
 class GetTemplatesData(BaseModel):
-    total: int
+    total: float
     templates: List[TemplateInfoDto]
 
 

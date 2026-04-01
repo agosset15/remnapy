@@ -36,12 +36,10 @@ classifiers = [
 ]
 
 [project.urls]
-PanelPage = "https://remna.st/"
-CommunityChat = "https://t.me/+xQs17zMzwCY1NzYy"
-UpdateChannel = "https://t.me/remnawave"
-RemnashopPage = "http://www.github.com/snoups/remnashop"
-RemnashopChat = "https://t.me/remna_shop"
-Homepage = "https://github.com/snoups/remnapy"
+Homepage = "https://github.com/remnawave/python-sdk"
+"Panel Page" = "https://remna.st/"
+"Community Chat" = "https://t.me/+xQs17zMzwCY1NzYy"
+"Update Channel" = "https://t.me/remnawave"
 
 [tool.poetry.group.test.dependencies]
 ruff = "^0.4.4"

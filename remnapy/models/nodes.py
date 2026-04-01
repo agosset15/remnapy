@@ -88,6 +88,9 @@ class CreateNodeRequestDto(BaseModel):
     tags: Optional[
         List[Annotated[str, StringConstraints(max_length=36, pattern=r"^[A-Z0-9_:]+$")]]
     ] = Field(None, serialization_alias="tags", max_length=10)
+    active_plugin_uuid: Optional[UUID] = Field(
+        None, serialization_alias="activePluginUuid"
+    )
 
 
 class UpdateNodeRequestDto(BaseModel):
@@ -125,6 +128,9 @@ class UpdateNodeRequestDto(BaseModel):
     tags: Optional[
         List[Annotated[str, StringConstraints(max_length=36, pattern=r"^[A-Z0-9_:]+$")]]
     ] = Field(None, serialization_alias="tags", max_length=10)
+    active_plugin_uuid: Optional[UUID] = Field(
+        None, serialization_alias="activePluginUuid"
+    )
 
 
 class ReorderNodeRequestDto(BaseModel):
@@ -143,7 +149,7 @@ class NodeResponseDto(BaseModel):
     last_status_message: Optional[str] = Field(None, alias="lastStatusMessage")
     xray_version: Optional[str] = Field(None, alias="xrayVersion")
     node_version: Optional[str] = Field(None, alias="nodeVersion")
-    xray_uptime: str = Field(alias="xrayUptime")
+    xray_uptime: float = Field(0, alias="xrayUptime")
     is_traffic_tracking_active: bool = Field(alias="isTrafficTrackingActive")
     traffic_reset_day: Optional[int] = Field(None, alias="trafficResetDay")
     traffic_limit_bytes: Optional[float] = Field(None, alias="trafficLimitBytes")
@@ -162,6 +168,7 @@ class NodeResponseDto(BaseModel):
     provider_uuid: Optional[UUID] = Field(None, alias="providerUuid")
     provider: Optional[NodeProviderDto] = None
     tags: List[str] = Field(default_factory=list, alias="tags")
+    active_plugin_uuid: Optional[UUID] = Field(None, alias="activePluginUuid")
 
 
 class CreateNodeResponseDto(NodeResponseDto):
@@ -296,3 +303,13 @@ class NodesBulkActionsResponseDto(BaseModel):
     """Response after performing bulk actions on nodes"""
 
     event_sent: bool = Field(alias="eventSent")
+
+
+class BulkNodesUpdateRequestDto(NodesBulkActionsRequestDto):
+    """OpenAPI alias for bulk nodes update request"""
+    pass
+
+
+class BulkNodesUpdateResponseDto(NodesBulkActionsResponseDto):
+    """OpenAPI alias for bulk nodes update response"""
+    pass

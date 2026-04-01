@@ -64,6 +64,15 @@ class GenericOAuth2Settings(BaseModel):
     allowed_emails: List[str] = Field(alias="allowedEmails")
 
 
+class TelegramOAuth2Settings(BaseModel):
+    """Telegram OAuth2 settings"""
+    enabled: bool
+    client_id: str | None = Field(alias="clientId")
+    client_secret: str | None = Field(alias="clientSecret")
+    allowed_ids: List[str] = Field(alias="allowedIds")
+    frontend_domain: str | None = Field(alias="frontendDomain")
+
+
 class OAuth2Settings(BaseModel):
     """OAuth2 authentication settings"""
 
@@ -72,14 +81,17 @@ class OAuth2Settings(BaseModel):
     yandex: YandexOAuth2Settings
     keycloak: KeycloakOAuth2Settings
     generic: GenericOAuth2Settings
+    telegram: TelegramOAuth2Settings
 
 
 class TelegramAuthSettings(BaseModel):
     """Telegram authentication settings"""
 
     enabled: bool
-    bot_token: str | None = Field(alias="botToken")
-    admin_ids: List[str] = Field(alias="adminIds")
+    client_id: str | None = Field(alias="clientId")
+    client_secret: str | None = Field(alias="clientSecret")
+    allowed_ids: List[str] = Field(alias="allowedIds")
+    frontend_domain: str | None = Field(alias="frontendDomain")
 
 
 class PasswordSettings(BaseModel):
@@ -100,7 +112,6 @@ class RemnawaveSettingsData(BaseModel):
 
     passkey_settings: PasskeySettings | None = Field(alias="passkeySettings")
     oauth2_settings: OAuth2Settings | None = Field(alias="oauth2Settings")
-    tg_auth_settings: TelegramAuthSettings | None = Field(alias="tgAuthSettings")
     password_settings: Optional[PasswordSettings] = Field(
         None, alias="passwordSettings"
     )
@@ -117,22 +128,10 @@ class GetRemnawaveSettingsResponseDto(RemnawaveSettingsData):
 
 class UpdateRemnawaveSettingsRequestDto(BaseModel):
     """Update Remnawave settings request"""
-
-    passkey_settings: Optional[PasskeySettings] = Field(
-        None, serialization_alias="passkeySettings"
-    )
-    oauth2_settings: Optional[OAuth2Settings] = Field(
-        None, serialization_alias="oauth2Settings"
-    )
-    tg_auth_settings: Optional[TelegramAuthSettings] = Field(
-        None, serialization_alias="tgAuthSettings"
-    )
-    password_settings: Optional[PasswordSettings] = Field(
-        None, serialization_alias="passwordSettings"
-    )
-    branding_settings: Optional[BrandingSettings] = Field(
-        None, serialization_alias="brandingSettings"
-    )
+    passkey_settings: Optional[PasskeySettings] = Field(None, serialization_alias="passkeySettings")
+    oauth2_settings: Optional[OAuth2Settings] = Field(None, serialization_alias="oauth2Settings")
+    password_settings: Optional[PasswordSettings] = Field(None, serialization_alias="passwordSettings")
+    branding_settings: Optional[BrandingSettings] = Field(None, serialization_alias="brandingSettings")
 
 
 class UpdateRemnawaveSettingsResponseDto(RemnawaveSettingsData):
