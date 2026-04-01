@@ -4,24 +4,18 @@ from .client_type import ClientType
 from .error_code import ErrorCode
 from .fingerprint import Fingerprint
 from .security_layer import SecurityLayer
+from .template_type import TemplateType
+from .users import TrafficLimitStrategy, UserStatus
+from .webhook import (
+    TCRMEvents, TErrorsEvents, TNodeEvents, TResetPeriods, TServiceEvents, TUserEvents, TUserHwidDevicesEvents, TUsersStatus, TTorrentBlockerEvents
+)
+from .auth import OAuth2Provider
 from .subscriptions_settings import (
     ResponseRuleConditionOperator,
     ResponseRuleOperator,
     ResponseRuleVersion,
     ResponseType,
     SubscriptionType,
-)
-from .template_type import TemplateType
-from .users import TrafficLimitStrategy, UserStatus
-from .webhook import (
-    TCRMEvents,
-    TErrorsEvents,
-    TNodeEvents,
-    TResetPeriods,
-    TServiceEvents,
-    TUserEvents,
-    TUserHwidDevicesEvents,
-    TUsersStatus,
 )
 
 __all__ = [
@@ -48,4 +42,5 @@ __all__ = [
     "TUserHwidDevicesEvents",
     "TResetPeriods",
     "TUsersStatus",
+    "TTorrentBlockerEvents",
 ]

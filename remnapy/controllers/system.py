@@ -14,6 +14,12 @@ from remnapy.models import (
     GetRemnawaveHealthResponseDto,
     GetStatsResponseDto,
     GetX25519KeyPairResponseDto,
+    EncryptHappCryptoLinkRequestDto,
+    EncryptHappCryptoLinkResponseDto,
+    DebugSrrMatcherRequestDto,
+    DebugSrrMatcherResponseDto,
+    GetMetadataResponseDto,
+    GetRecapResponseDto,
 )
 from remnapy.rapid import BaseController, get, post
 
@@ -82,4 +88,11 @@ class SystemController(BaseController):
         body: Annotated[DebugSrrMatcherRequestDto, PydanticBody()],
     ) -> DebugSrrMatcherResponseDto:
         """Test SRR Matcher"""
+        ...
+
+    @get("/system/stats/recap", response_class=GetRecapResponseDto)
+    async def get_recap(
+        self,
+    ) -> GetRecapResponseDto:
+        """Get Recap"""
         ...

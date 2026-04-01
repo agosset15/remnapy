@@ -33,6 +33,15 @@ from remnapy.controllers import (
     UsersController,
     WebhookUtility,
     XrayConfigController,
+    SubscriptionRequestHistoryController,
+    PasskeysController,
+    ExternalSquadsController,
+    SnippetsController,
+    RemnawaveSettingsController,
+    SubscriptionPageConfigController,
+    IpControlController,
+    NodePluginsController,
+    MetadataController,
 )
 
 
@@ -103,6 +112,8 @@ class RemnawaveSDK:
         self.remnawave_settings = RemnawaveSettingsController(self._client)
         self.subscription_page_config = SubscriptionPageConfigController(self._client)
         self.ip_control = IpControlController(self._client)
+        self.node_plugins = NodePluginsController(self._client)
+        self.metadata = MetadataController(self._client)
 
     def _validate_params(self) -> None:
         if self._client is None:
