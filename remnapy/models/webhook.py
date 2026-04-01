@@ -14,6 +14,7 @@ from remnapy.enums import (
     TUserEvents,
     TUserHwidDevicesEvents,
     TUsersStatus,
+    TTorrentBlockerEvents
 )
 
 # ---------------- USER ---------------- #
