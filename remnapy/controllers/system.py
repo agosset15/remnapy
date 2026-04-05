@@ -5,15 +5,8 @@ from rapid_api_client import PydanticBody
 from remnapy.models import (
     DebugSrrMatcherRequestDto,
     DebugSrrMatcherResponseDto,
-    EncryptHappCryptoLinkRequestDto,
-    EncryptHappCryptoLinkResponseDto,
-    GetBandwidthStatsResponseDto,
     GetMetadataResponseDto,
-    GetNodesMetricsResponseDto,
-    GetNodesStatisticsResponseDto,
-    GetRemnawaveHealthResponseDto,
-    GetStatsResponseDto,
-    GetX25519KeyPairResponseDto,
+    GetRecapResponseDto,
 )
 from remnapy.rapid import BaseController, get, post
 
@@ -82,4 +75,11 @@ class SystemController(BaseController):
         body: Annotated[DebugSrrMatcherRequestDto, PydanticBody()],
     ) -> DebugSrrMatcherResponseDto:
         """Test SRR Matcher"""
+        ...
+
+    @get("/system/stats/recap", response_class=GetRecapResponseDto)
+    async def get_recap(
+        self,
+    ) -> GetRecapResponseDto:
+        """Get Recap"""
         ...

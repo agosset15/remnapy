@@ -57,10 +57,12 @@ class HWIDUserController(BaseController):
         """Delete all user HWID devices"""
         ...
 
-    @get("/hwid/devices/{uuid}", response_class=GetUserHwidDevicesResponseDto)
+    @get("/hwid/devices/{userUuid}", response_class=GetUserHwidDevicesResponseDto)
     async def get_hwid_user(
         self,
-        uuid: Annotated[Union[str, UUID], Path(description="UUID of the User")],
+        uuid: Annotated[
+            Union[str, UUID], Path(description="UUID of the User", alias="userUuid")
+        ],
     ) -> GetUserHwidDevicesResponseDto:
         """Get a user HWID device"""
         ...

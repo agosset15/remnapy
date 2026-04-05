@@ -5,6 +5,8 @@ from rapid_api_client import Path
 from rapid_api_client.annotations import PydanticBody
 
 from remnapy.models import (
+    BulkNodesUpdateRequestDto,
+    BulkNodesUpdateResponseDto,
     CreateNodeRequestDto,
     CreateNodeResponseDto,
     DeleteNodeResponseDto,
@@ -153,4 +155,12 @@ class NodesController(BaseController):
         body: Annotated[NodesBulkActionsRequestDto, PydanticBody()],
     ) -> NodesBulkActionsResponseDto:
         """Perform actions for many nodes (ENABLE, DISABLE, RESTART, RESET_TRAFFIC)"""
+        ...
+
+    @post("/nodes/bulk-actions/update", response_class=BulkNodesUpdateResponseDto)
+    async def bulk_nodes_update(
+        self,
+        body: Annotated[BulkNodesUpdateRequestDto, PydanticBody()],
+    ) -> BulkNodesUpdateResponseDto:
+        """Update many nodes"""
         ...

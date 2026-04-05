@@ -19,6 +19,7 @@ from .webhook import (
     TNodeEvents,
     TResetPeriods,
     TServiceEvents,
+    TTorrentBlockerEvents,
     TUserEvents,
     TUserHwidDevicesEvents,
     TUsersStatus,
@@ -48,4 +49,5 @@ __all__ = [
     "TUserHwidDevicesEvents",
     "TResetPeriods",
     "TUsersStatus",
+    "TTorrentBlockerEvents",
 ]

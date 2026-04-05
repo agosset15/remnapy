@@ -4,14 +4,11 @@ from uuid import UUID
 from rapid_api_client import Path, Query
 from rapid_api_client.annotations import PydanticBody
 
-from remnapy.enums import ClientType
 from remnapy.models import (
     GetAllSubscriptionsResponseDto,
+    GetConnectionKeysByUuidResponseDto,
     GetSubpageConfigByShortUuidRequestBodyDto,
     GetSubpageConfigByShortUuidResponseDto,
-    GetSubscriptionByShortUUIDResponseDto,
-    GetSubscriptionByUsernameResponseDto,
-    GetSubscriptionByUUIDResponseDto,
 )
 from remnapy.models.subscription import GetRawSubscriptionByShortUuidResponseDto
 from remnapy.rapid import BaseController, get
@@ -44,13 +41,14 @@ class SubscriptionsController(BaseController):
         ...
 
     @get(
-        "/subscriptions/by-short-uuid/{short_uuid}",
+        "/subscriptions/by-short-uuid/{shortUuid}",
         response_class=GetSubscriptionByShortUUIDResponseDto,
     )
     async def get_subscription_by_short_uuid(
         self,
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the subscription")
+            Union[str, UUID],
+            Path(description="Short UUID of the subscription", alias="shortUuid"),
         ],
     ) -> GetSubscriptionByShortUUIDResponseDto:
         """None"""
@@ -67,13 +65,14 @@ class SubscriptionsController(BaseController):
         ...
 
     @get(
-        "/subscriptions/subpage-config/{short_uuid}",
+        "/subscriptions/subpage-config/{shortUuid}",
         response_class=GetSubpageConfigByShortUuidResponseDto,
     )
     async def get_subpage_config(
         self,
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the subscription")
+            Union[str, UUID],
+            Path(description="Short UUID of the subscription", alias="shortUuid"),
         ],
         body: Annotated[GetSubpageConfigByShortUuidRequestBodyDto, PydanticBody()],
     ) -> GetSubpageConfigByShortUuidResponseDto:
@@ -81,17 +80,34 @@ class SubscriptionsController(BaseController):
         ...
 
     @get(
-        "/subscriptions/by-short-uuid/{short_uuid}/raw",
+        "/subscriptions/by-short-uuid/{shortUuid}/raw",
         response_class=GetRawSubscriptionByShortUuidResponseDto,
     )
     async def get_raw_subscription(
         self,
         short_uuid: Annotated[
-            Union[str, UUID], Path(description="Short UUID of the user")
+            Union[str, UUID],
+            Path(description="Short UUID of the user", alias="shortUuid"),
         ],
-        withDisabledHosts: Annotated[
-            Annotated[bool, Path(description="Include disabled hosts")], bool
+        with_disabled_hosts: Annotated[
+            bool,
+            Query(
+                default=False,
+                alias="withDisabledHosts",
+                description="Include disabled hosts",
+            ),
         ] = False,
     ) -> GetRawSubscriptionByShortUuidResponseDto:
         """None"""
+        ...
+
+    @get(
+        "/subscriptions/connection-keys/{uuid}",
+        response_class=GetConnectionKeysByUuidResponseDto,
+    )
+    async def get_connection_keys_by_uuid(
+        self,
+        uuid: Annotated[Union[str, UUID], Path(description="UUID of the user")],
+    ) -> GetConnectionKeysByUuidResponseDto:
+        """Get connection keys (base64 format) by uuid"""
         ...

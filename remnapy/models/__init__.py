@@ -95,7 +95,7 @@ from .hosts import (
     GetOneHostResponseDto,
     HostInboundData,
     HostResponseDto,
-    HostsResponseDto,  # Legacy alias
+    HostsResponseDto,  # Legacy alias  # Legacy alias
     ReorderHostItem,
     ReorderHostRequestDto,
     ReorderHostResponseDto,
@@ -112,7 +112,7 @@ from .hosts_bulk_actions import (
     SetPortToManyHostsResponseDto,
 )
 from .hwid import (
-    CreateHWIDUser,  # Legacy alias
+    CreateHWIDUser,  # Legacy alias  # Legacy alias
     CreateUserHwidDeviceRequestDto,
     CreateUserHwidDeviceResponseDto,
     DeleteUserAllHwidDeviceRequestDto,
@@ -121,9 +121,9 @@ from .hwid import (
     GetHwidStatisticsResponseDto,
     GetTopUsersByHwidDevicesResponseDto,
     GetUserHwidDevicesResponseDto,
-    HWIDDeleteRequest,  # Legacy alias
-    HWIDUserResponseDto,  # Legacy alias
-    HWIDUserResponseDtoList,  # Legacy alias
+    HWIDDeleteRequest,  # Legacy alias  # Legacy alias
+    HWIDUserResponseDto,  # Legacy alias  # Legacy alias
+    HWIDUserResponseDtoList,  # Legacy alias  # Legacy alias
     TopUserByHwidDevicesDto,
     TopUsersByHwidDevicesData,
 )
@@ -138,7 +138,7 @@ from .inbounds import (
     GetInboundsResponseDto,
     InboundResponseDto,
     InboundsByProfileData,
-    InboundsResponseDto,  # Legacy alias
+    InboundsResponseDto,  # Legacy alias  # Legacy alias
 )
 from .inbounds_bulk_actions import (
     AddInboundToNodesResponseDto,
@@ -154,19 +154,19 @@ from .infra_billing import (
     CreateInfraProviderRequestDto,
     CreateInfraProviderResponseDto,
     DeleteInfraBillingHistoryRecordByUuidResponseDto,
-    DeleteInfraBillingNodeByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraBillingNodeResponseDto)
-    DeleteInfraBillingNodeResponseDto,  # LEGACY
-    DeleteInfraProviderByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraProviderResponseDto)
-    DeleteInfraProviderResponseDto,  # LEGACY
-    GetAllInfraBillingHistoryResponseDto,  # LEGACY
-    GetAllInfraBillingNodesResponseDto,  # LEGACY
-    GetAllInfraProvidersResponseDto,  # LEGACY
+    DeleteInfraBillingNodeByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraBillingNodeResponseDto)  # ПЕРЕИМЕНОВАНА (было DeleteInfraBillingNodeResponseDto)
+    DeleteInfraBillingNodeResponseDto,  # LEGACY  # LEGACY
+    DeleteInfraProviderByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraProviderResponseDto)  # ПЕРЕИМЕНОВАНА (было DeleteInfraProviderResponseDto)
+    DeleteInfraProviderResponseDto,  # LEGACY  # LEGACY
+    GetAllInfraBillingHistoryResponseDto,  # LEGACY  # LEGACY
+    GetAllInfraBillingNodesResponseDto,  # LEGACY  # LEGACY
+    GetAllInfraProvidersResponseDto,  # LEGACY  # LEGACY
     GetInfraBillingHistoryByUuidResponseDto,
-    GetInfraBillingHistoryRecordsResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingHistoryResponseDto)
+    GetInfraBillingHistoryRecordsResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingHistoryResponseDto)  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingHistoryResponseDto)
     GetInfraBillingNodeByUuidResponseDto,
-    GetInfraBillingNodesResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingNodesResponseDto)
+    GetInfraBillingNodesResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingNodesResponseDto)  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingNodesResponseDto)
     GetInfraProviderByUuidResponseDto,
-    GetInfraProvidersResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraProvidersResponseDto)
+    GetInfraProvidersResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraProvidersResponseDto)  # ПЕРЕИМЕНОВАНА (было GetAllInfraProvidersResponseDto)
     InfraBillingHistoryDto,
     InfraBillingNodeDto,
     InfraProviderDto,
@@ -213,8 +213,49 @@ from .ip_control import (
     TargetAllNodes,
     TargetSpecificNodes,
 )
-from .keygen import GetPubKeyResponseDto, PubKeyResponseDto  # Legacy alias
+from .keygen import (  # Legacy alias  # Legacy alias
+    GetPubKeyResponseDto,
+    PubKeyResponseDto,
+)
+from .metadata import (
+    GetMetadataResponseDto,
+    GetNodeMetadataResponseDto,
+    GetUserMetadataResponseDto,
+    UpsertNodeMetadataRequestBodyDto,
+    UpsertNodeMetadataResponseDto,
+    UpsertUserMetadataRequestBodyDto,
+    UpsertUserMetadataResponseDto,
+)
+from .node_plugins import (
+    BlockIpItemDto,
+    BlockIpsCommandDto,
+    CloneNodePluginRequestDto,
+    CloneNodePluginResponseDto,
+    CreateNodePluginRequestDto,
+    CreateNodePluginResponseDto,
+    DeleteNodePluginResponseDto,
+    GetNodePluginResponseDto,
+    GetNodePluginsResponseDto,
+    GetTorrentBlockerReportsResponseDto,
+    GetTorrentBlockerReportsStatsResponseDto,
+    NodePluginDto,
+    PluginExecutorRequestDto,
+    PluginExecutorResponseDto,
+    RecreateTablesCommandDto,
+    ReorderNodePluginItem,
+    ReorderNodePluginsRequestDto,
+    ReorderNodePluginsResponseDto,
+    TargetAllNodesDto,
+    TargetSpecificNodesDto,
+    TorrentBlockerReportRecordDto,
+    TruncateTorrentBlockerReportsResponseDto,
+    UnblockIpsCommandDto,
+    UpdateNodePluginRequestDto,
+    UpdateNodePluginResponseDto,
+)
 from .nodes import (
+    BulkNodesUpdateRequestDto,
+    BulkNodesUpdateResponseDto,
     CreateNodeRequestDto,
     CreateNodeResponseDto,
     DeleteNodeResponseDto,
@@ -230,7 +271,7 @@ from .nodes import (
     NodeResponseDto,
     NodesBulkActionsRequestDto,
     NodesBulkActionsResponseDto,
-    NodesResponseDto,  # Legacy alias
+    NodesResponseDto,  # Legacy alias  # Legacy alias
     ProfileModificationRequestDto,
     ProfileModificationResponseDto,
     ReorderNodeRequestDto,
@@ -238,7 +279,7 @@ from .nodes import (
     ResetNodeTrafficRequestDto,
     ResetNodeTrafficResponseDto,
     RestartAllNodesRequestBodyDto,
-    RestartAllNodesRequestDto,  # Legacy alias,
+    RestartAllNodesRequestDto,  # Legacy alias,  # Legacy alias,
     RestartAllNodesResponseDto,
     RestartNodeResponseDto,
     UpdateNodeRequestDto,
@@ -292,13 +333,14 @@ from .snippets import (
 )
 from .subscription import (
     GetAllSubscriptionsResponseDto,
+    GetConnectionKeysByUuidResponseDto,
     GetRawSubscriptionByShortUuidResponseDto,
     GetSubscriptionByShortUUIDResponseDto,
     GetSubscriptionByUsernameResponseDto,
     GetSubscriptionByUUIDResponseDto,
     GetSubscriptionInfoResponseDto,
     RawSettings,
-    SubscriptionInfoResponseDto,  # Legacy alias
+    SubscriptionInfoResponseDto,  # Legacy alias  # Legacy alias
     UserSubscription,
 )
 from .subscription_page import (
@@ -330,6 +372,7 @@ from .subscription_request_history import (
 )
 from .subscriptions_settings import (
     # Backward compatibility aliases
+    # Backward compatibility aliases
     CustomRemarks,
     CustomRemarksDto,
     GetSubscriptionSettingsResponseDto,
@@ -340,6 +383,7 @@ from .subscriptions_settings import (
     ResponseRule,
     ResponseRuleCondition,
     ResponseRules,
+    ResponseRulesSettings,
     SubscriptionSettingsResponseDto,
     SubscriptionType,
     UpdateSubscriptionSettingsRequestDto,
@@ -371,6 +415,7 @@ from .system import (
     GetMetadataResponseDto,
     GetNodesMetricsResponseDto,
     GetNodesStatisticsResponseDto,
+    GetRecapResponseDto,
     GetRemnawaveHealthResponseDto,
     GetStatsResponseDto,
     GetX25519KeyPairResponseDto,
@@ -378,6 +423,8 @@ from .system import (
     NodesStatisticResponseDto,
     NodeStatistic,
     OnlineStatistic,
+    RecapThisMonth,
+    RecapTotal,
     StatisticResponseDto,
     StatusCounts,
     UsersStatistic,
@@ -393,8 +440,30 @@ from .users import (
     # Other Response DTOs
     DeleteUserResponseDto,
     DisableUserResponseDto,
+    DropByIpAddresses,
+    DropByUserUuids,
+    # Request DTOs
+    DropConnectionsRequestDto,
+    DropConnectionsResponseData,
+    DropConnectionsResponseDto,
     EmailUserResponseDto,
     EnableUserResponseDto,
+    # Data models
+    FetchIpsJobData,
+    FetchIpsNodeResult,
+    FetchIpsProgressData,
+    # Response DTOs
+    FetchIpsResponseDto,
+    FetchIpsResult,
+    FetchIpsResultData,
+    FetchIpsResultResponseDto,
+    FetchUsersIpsJobData,
+    FetchUsersIpsResponseDto,
+    FetchUsersIpsResult,
+    FetchUsersIpsResultData,
+    FetchUsersIpsResultResponseDto,
+    FetchUsersIpsUser,
+    FetchUsersIpsUserIp,
     GetAllTagsResponseDto,
     # Response DTOs - Collections
     GetAllUsersResponseDto,
@@ -407,12 +476,16 @@ from .users import (
     GetUserSubscriptionRequestHistoryResponseDto,
     HappCrypto,
     ResetUserTrafficResponseDto,
+    ResolveUserRequestBodyDto,
+    ResolveUserResponseDto,
     RevokeUserRequestDto,
     RevokeUserSubscriptionResponseDto,
     SubscriptionRequestRecord,
     SubscriptionRequestsResponseData,
     TagsResponseDto,
     TagUserResponseDto,
+    TargetAllNodes,
+    TargetSpecificNodes,
     # Response DTOs - Arrays (RootModel)
     TelegramUserResponseDto,
     UpdateUserRequestDto,
@@ -465,7 +538,14 @@ from .webhook import (
     LoginAttemptDto,
     NodeDto,
     NodeEventDto,
+    NodeSystemDto,
+    NodeSystemInfoDto,
+    NodeSystemInterfaceDto,
+    NodeSystemStatsDto,
+    NodeVersionsDto,
     ServiceEventDto,
+    TorrentBlockerEventDto,
+    TorrentBlockerReportDto,
     UserDto,
     UserEventDto,
     UserHwidDeviceEventDto,
@@ -498,6 +578,7 @@ __all__ = [
     "VerifyPasskeyAuthenticationRequestDto",
     "VerifyPasskeyAuthenticationResponseDto",
     "GetPasskeyAuthenticationOptionsResponseDto",
+    "BrandingSettings",
     # Nodes models
     "CreateNodeRequestDto",
     "CreateNodeResponseDto",
@@ -527,6 +608,8 @@ __all__ = [
     "NodeBulkActionType",
     "NodesBulkActionsRequestDto",
     "NodesBulkActionsResponseDto",
+    "BulkNodesUpdateRequestDto",
+    "BulkNodesUpdateResponseDto",
     # Hosts models
     "CreateHostRequestDto",
     "CreateHostResponseDto",
@@ -567,6 +650,7 @@ __all__ = [
     "UserSubscription",
     "GetRawSubscriptionByShortUuidResponseDto",
     "RawSettings",
+    "GetConnectionKeysByUuidResponseDto",
     # Subscription settings models
     "GetSubscriptionSettingsResponseDto",
     "SubscriptionSettingsResponseDto",
@@ -583,6 +667,7 @@ __all__ = [
     "ResponseRule",
     "ResponseRuleCondition",
     "ResponseRules",
+    "ResponseRulesSettings",
     # Subscription template models
     "GetTemplateResponseDto",
     "TemplateResponseDto",
@@ -618,7 +703,10 @@ __all__ = [
     "DebugSrrMatcherResponseDto",
     "EncryptHappCryptoLinkRequestDto",
     "EncryptHappCryptoLinkResponseDto",
-    "GetMetadataResponseDto"
+    "GetMetadataResponseDto",
+    "GetRecapResponseDto",
+    "RecapThisMonth",
+    "RecapTotal",
     # XRay config models
     "ConfigResponseDto",  # Legacy alias
     "GetConfigResponseDto",
@@ -685,6 +773,8 @@ __all__ = [
     "CreateUserRequestDto",
     "UpdateUserRequestDto",
     "RevokeUserRequestDto",
+    "ResolveUserRequestBodyDto",
+    "ResolveUserResponseDto",
     "CreateUserResponseDto",
     "UpdateUserResponseDto",
     "GetUserByUuidResponseDto",
@@ -845,6 +935,15 @@ __all__ = [
     "CustomErrorEventDto",
     # CRM EVENTS
     "CrmEventDto",
+    # TORRENT BLOCKER EVENTS
+    "TorrentBlockerEventDto",
+    "TorrentBlockerReportDto",
+    # NODE SYSTEM/VERSIONS
+    "NodeSystemDto",
+    "NodeSystemInfoDto",
+    "NodeSystemStatsDto",
+    "NodeSystemInterfaceDto",
+    "NodeVersionsDto",
     # WEBHOOK PAYLOAD
     "WebhookPayloadDto",
     # Passkeys models
@@ -931,5 +1030,46 @@ __all__ = [
     "FetchIpsNodeResult",
     "FetchIpsResult",
     "FetchIpsResultData",
+    "FetchUsersIpsResponseDto",
+    "FetchUsersIpsResultResponseDto",
+    "FetchUsersIpsJobData",
+    "FetchUsersIpsUserIp",
+    "FetchUsersIpsUser",
+    "FetchUsersIpsResult",
+    "FetchUsersIpsResultData",
     "DropConnectionsResponseData",
+    # Metadata models
+    "GetMetadataResponseDto",
+    "GetUserMetadataResponseDto",
+    "UpsertUserMetadataRequestBodyDto",
+    "UpsertUserMetadataResponseDto",
+    "GetNodeMetadataResponseDto",
+    "UpsertNodeMetadataRequestBodyDto",
+    "UpsertNodeMetadataResponseDto",
+    # Node plugins models
+    "GetTorrentBlockerReportsResponseDto",
+    "GetTorrentBlockerReportsStatsResponseDto",
+    "TruncateTorrentBlockerReportsResponseDto",
+    "GetNodePluginsResponseDto",
+    "GetNodePluginResponseDto",
+    "UpdateNodePluginRequestDto",
+    "UpdateNodePluginResponseDto",
+    "DeleteNodePluginResponseDto",
+    "CreateNodePluginRequestDto",
+    "CreateNodePluginResponseDto",
+    "ReorderNodePluginItem",
+    "ReorderNodePluginsRequestDto",
+    "ReorderNodePluginsResponseDto",
+    "CloneNodePluginRequestDto",
+    "CloneNodePluginResponseDto",
+    "PluginExecutorRequestDto",
+    "PluginExecutorResponseDto",
+    "BlockIpsCommandDto",
+    "UnblockIpsCommandDto",
+    "RecreateTablesCommandDto",
+    "BlockIpItemDto",
+    "TorrentBlockerReportRecordDto",
+    "NodePluginDto",
+    "TargetAllNodesDto",
+    "TargetSpecificNodesDto",
 ]

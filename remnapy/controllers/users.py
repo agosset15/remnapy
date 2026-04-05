@@ -8,7 +8,9 @@ from remnapy.models import (
     CreateUserRequestDto,
     CreateUserResponseDto,
     DeleteUserResponseDto,
+    DisableUserResponseDto,
     EmailUserResponseDto,
+    EnableUserResponseDto,
     GetAllTagsResponseDto,
     GetAllUsersResponseDto,
     GetUserAccessibleNodesResponseDto,
@@ -17,7 +19,11 @@ from remnapy.models import (
     GetUserByUsernameResponseDto,
     GetUserByUuidResponseDto,
     GetUserSubscriptionRequestHistoryResponseDto,
+    ResetUserTrafficResponseDto,
+    ResolveUserRequestBodyDto,
+    ResolveUserResponseDto,
     RevokeUserRequestDto,
+    RevokeUserSubscriptionResponseDto,
     TagUserResponseDto,
     TelegramUserResponseDto,
     UpdateUserRequestDto,
@@ -64,36 +70,41 @@ class UsersController(BaseController):
         """Delete user"""
         ...
 
-    @post("/users/{uuid}/actions/revoke", response_class=UpdateUserResponseDto)
+    @post(
+        "/users/{uuid}/actions/revoke", response_class=RevokeUserSubscriptionResponseDto
+    )
     async def revoke_user_subscription(
         self,
         uuid: Annotated[Union[str, UUID], Path(description="UUID of the user")],
         body: Optional[Annotated[RevokeUserRequestDto, PydanticBody()]] = None,
-    ) -> UpdateUserResponseDto:
+    ) -> RevokeUserSubscriptionResponseDto:
         """Revoke User Subscription"""
         ...
 
-    @post("/users/{uuid}/actions/disable", response_class=UpdateUserResponseDto)
+    @post("/users/{uuid}/actions/disable", response_class=DisableUserResponseDto)
     async def disable_user(
         self,
         uuid: Annotated[Union[str, UUID], Path(description="UUID of the user")],
-    ) -> UpdateUserResponseDto:
+    ) -> DisableUserResponseDto:
         """Disable User"""
         ...
 
-    @post("/users/{uuid}/actions/enable", response_class=UpdateUserResponseDto)
+    @post("/users/{uuid}/actions/enable", response_class=EnableUserResponseDto)
     async def enable_user(
         self,
         uuid: Annotated[Union[str, UUID], Path(description="UUID of the user")],
-    ) -> UpdateUserResponseDto:
+    ) -> EnableUserResponseDto:
         """Enable User"""
         ...
 
-    @post("/users/{uuid}/actions/reset-traffic", response_class=UpdateUserResponseDto)
+    @post(
+        "/users/{uuid}/actions/reset-traffic",
+        response_class=ResetUserTrafficResponseDto,
+    )
     async def reset_user_traffic(
         self,
         uuid: Annotated[Union[str, UUID], Path(description="UUID of the user")],
-    ) -> UpdateUserResponseDto:
+    ) -> ResetUserTrafficResponseDto:
         """Reset User Traffic"""
         ...
 
@@ -192,4 +203,12 @@ class UsersController(BaseController):
         tag: Annotated[str, Path(description="Tag of the user")],
     ) -> TagUserResponseDto:
         """Get Users By Tag"""
+        ...
+
+    @post("/users/resolve", response_class=ResolveUserResponseDto)
+    async def resolve_user(
+        self,
+        body: Annotated[ResolveUserRequestBodyDto, PydanticBody()],
+    ) -> ResolveUserResponseDto:
+        """Resolve user by any identifier (uuid, id, shortUuid, username)"""
         ...

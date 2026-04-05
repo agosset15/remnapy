@@ -18,6 +18,8 @@ from remnapy.controllers import (
     InternalSquadsController,
     IpControlController,
     KeygenController,
+    MetadataController,
+    NodePluginsController,
     NodesController,
     PasskeysController,
     RemnawaveSettingsController,
@@ -103,6 +105,8 @@ class RemnawaveSDK:
         self.remnawave_settings = RemnawaveSettingsController(self._client)
         self.subscription_page_config = SubscriptionPageConfigController(self._client)
         self.ip_control = IpControlController(self._client)
+        self.node_plugins = NodePluginsController(self._client)
+        self.metadata = MetadataController(self._client)
 
     def _validate_params(self) -> None:
         if self._client is None:
