@@ -82,6 +82,7 @@ class ResponseRule(BaseModel):
 
 class ResponseRulesSettings(BaseModel):
     """Settings for response rules"""
+
     model_config = {"populate_by_name": True}
 
     disable_subscription_access_by_path: Optional[bool] = Field(

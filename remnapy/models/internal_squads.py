@@ -32,7 +32,10 @@ class InternalSquadDto(BaseModel):
 
 
 class CreateInternalSquadRequestDto(BaseModel):
-    name: Annotated[str, StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$")]
+    name: Annotated[
+        str,
+        StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$"),
+    ]
     inbounds: List[UUID] = Field(default_factory=list)
 
 
@@ -43,7 +46,14 @@ class CreateInternalSquadResponseDto(InternalSquadDto):
 class UpdateInternalSquadRequestDto(BaseModel):
     uuid: UUID
     inbounds: List[UUID] = Field(default_factory=list)
-    name: Optional[Annotated[str, StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$")]] = None
+    name: Optional[
+        Annotated[
+            str,
+            StringConstraints(
+                min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$"
+            ),
+        ]
+    ] = None
 
 
 class UpdateInternalSquadResponseDto(InternalSquadDto):

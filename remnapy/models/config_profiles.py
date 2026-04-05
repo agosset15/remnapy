@@ -34,7 +34,10 @@ class ConfigProfileDto(BaseModel):
 
 
 class CreateConfigProfileRequestDto(BaseModel):
-    name: Annotated[str, StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$")]
+    name: Annotated[
+        str,
+        StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$"),
+    ]
     config: Dict[str, Any]
 
 
@@ -44,7 +47,14 @@ class CreateConfigProfileResponseDto(ConfigProfileDto):
 
 class UpdateConfigProfileRequestDto(BaseModel):
     uuid: UUID
-    name: Optional[Annotated[str, StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$")]] = None
+    name: Optional[
+        Annotated[
+            str,
+            StringConstraints(
+                min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$"
+            ),
+        ]
+    ] = None
     config: Optional[Dict[str, Any]] = None
 
 

@@ -7,10 +7,13 @@ from rapid_api_client.annotations import PydanticBody
 from remnapy.models import (
     GetAllSubscriptionsResponseDto,
     GetConnectionKeysByUuidResponseDto,
+    GetRawSubscriptionByShortUuidResponseDto,
     GetSubpageConfigByShortUuidRequestBodyDto,
     GetSubpageConfigByShortUuidResponseDto,
+    GetSubscriptionByShortUUIDResponseDto,
+    GetSubscriptionByUsernameResponseDto,
+    GetSubscriptionByUUIDResponseDto,
 )
-from remnapy.models.subscription import GetRawSubscriptionByShortUuidResponseDto
 from remnapy.rapid import BaseController, get
 
 

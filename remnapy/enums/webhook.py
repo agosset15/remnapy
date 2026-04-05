@@ -55,9 +55,7 @@ TUserHwidDevicesEvents = Literal[
     "user_hwid_devices.deleted",
 ]
 
-TTorrentBlockerEvents = Literal[
-    "torrent_blocker.report",
-]
+TTorrentBlockerEvents = Literal["torrent_blocker.report",]
 
 TResetPeriods = Literal["NO_RESET", "DAY", "WEEK", "MONTH", "MONTH_ROLLING"]
 TUsersStatus = Literal["DISABLED", "LIMITED", "EXPIRED", "ACTIVE"]

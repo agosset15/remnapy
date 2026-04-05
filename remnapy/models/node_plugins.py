@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Any, Annotated, List, Literal, Optional, Union
+from typing import Annotated, Any, List, Literal, Optional, Union
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints
@@ -138,7 +138,12 @@ class UpdateNodePluginRequestDto(BaseModel):
 
     uuid: UUID
     name: Optional[
-        Annotated[str, StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$")]
+        Annotated[
+            str,
+            StringConstraints(
+                min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$"
+            ),
+        ]
     ] = None
     plugin_config: Optional[Any] = Field(default=None, alias="pluginConfig")
 
@@ -154,7 +159,10 @@ class DeleteNodePluginResponseDto(BaseModel):
 
 
 class CreateNodePluginRequestDto(BaseModel):
-    name: Annotated[str, StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$")]
+    name: Annotated[
+        str,
+        StringConstraints(min_length=2, max_length=30, pattern=r"^[A-Za-z0-9_\s-]+$"),
+    ]
 
 
 class CreateNodePluginResponseDto(NodePluginDto):
@@ -205,7 +213,9 @@ class RecreateTablesCommandDto(BaseModel):
     command: Literal["recreateTables"]
 
 
-PluginCommandDto = Union[BlockIpsCommandDto, UnblockIpsCommandDto, RecreateTablesCommandDto]
+PluginCommandDto = Union[
+    BlockIpsCommandDto, UnblockIpsCommandDto, RecreateTablesCommandDto
+]
 
 
 class TargetAllNodesDto(BaseModel):

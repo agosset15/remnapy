@@ -2,7 +2,6 @@ from typing import Annotated
 
 from rapid_api_client import Path
 from rapid_api_client.annotations import PydanticBody
-
 from remnawave.models import (
     GetNodeMetadataResponseDto,
     GetUserMetadataResponseDto,

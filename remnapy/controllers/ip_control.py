@@ -46,7 +46,10 @@ class IpControlController(BaseController):
         """
         ...
 
-    @post("/ip-control/fetch-users-ips/{nodeUuid}", response_class=FetchUsersIpsResponseDto)
+    @post(
+        "/ip-control/fetch-users-ips/{nodeUuid}",
+        response_class=FetchUsersIpsResponseDto,
+    )
     async def fetch_users_ips(
         self,
         nodeUuid: Annotated[str, Path(description="UUID of the node")],
@@ -60,7 +63,10 @@ class IpControlController(BaseController):
         """
         ...
 
-    @get("/ip-control/fetch-users-ips/result/{jobId}", response_class=FetchUsersIpsResultResponseDto)
+    @get(
+        "/ip-control/fetch-users-ips/result/{jobId}",
+        response_class=FetchUsersIpsResultResponseDto,
+    )
     async def get_fetch_users_ips_result(
         self,
         jobId: Annotated[str, Path(description="Job ID returned by fetch_users_ips")],

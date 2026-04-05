@@ -2,6 +2,7 @@ from .api_tokens_management import APITokensManagementController
 from .auth import AuthController
 from .bandwidthstats import BandWidthStatsController
 from .config_profiles import ConfigProfilesController
+from .external_squads import ExternalSquadsController
 from .hosts import HostsController
 from .hosts_bulk_actions import HostsBulkActionsController
 from .hwid import HWIDUserController
@@ -9,10 +10,18 @@ from .inbounds import InboundsController
 from .inbounds_bulk_actions import InboundsBulkActionsController
 from .infra_billing import InfraBillingController
 from .internal_squads import InternalSquadsController
+from .ip_control import IpControlController
 from .keygen import KeygenController
+from .metadata import MetadataController
+from .node_plugins import NodePluginsController
 from .nodes import NodesController
+from .passkeys import PasskeysController
+from .remnawave_settings import RemnawaveSettingsController
+from .snippets import SnippetsController
 from .subscription import SubscriptionController
+from .subscription_page import SubscriptionPageConfigController
 from .subscriptions_controller import SubscriptionsController
+from .subscriptions_request import SubscriptionRequestHistoryController
 from .subscriptions_settings import SubscriptionsSettingsController
 from .subscriptions_template import SubscriptionsTemplateController
 from .system import SystemController
@@ -20,15 +29,6 @@ from .users import UsersController
 from .users_bulk_actions import UsersBulkActionsController
 from .webhooks import WebhookUtility
 from .xray_config import XrayConfigController
-from .subscriptions_request import SubscriptionRequestHistoryController
-from .passkeys import PasskeysController
-from .external_squads import ExternalSquadsController
-from .snippets import SnippetsController
-from .remnawave_settings import RemnawaveSettingsController
-from .subscription_page import SubscriptionPageConfigController
-from .ip_control import IpControlController
-from .node_plugins import NodePluginsController
-from .metadata import MetadataController
 
 __all__ = [
     "APITokensManagementController",

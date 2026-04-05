@@ -1,8 +1,6 @@
 from typing import Annotated, Optional
 
 from rapid_api_client import Path, PydanticBody, Query
-
-
 from remnawave.models import (
     CloneNodePluginRequestDto,
     CloneNodePluginResponseDto,
@@ -25,23 +23,36 @@ from remnawave.rapid import BaseController, delete, get, patch, post
 
 
 class NodePluginsController(BaseController):
-    @get("/node-plugins/torrent-blocker", response_class=GetTorrentBlockerReportsResponseDto)
+    @get(
+        "/node-plugins/torrent-blocker",
+        response_class=GetTorrentBlockerReportsResponseDto,
+    )
     async def get_torrent_blocker_reports(
         self,
-        size: Annotated[Optional[int], Query(default=None, ge=1, description="Page size")] = None,
-        start: Annotated[Optional[int], Query(default=None, ge=0, description="Offset")] = None,
+        size: Annotated[
+            Optional[int], Query(default=None, ge=1, description="Page size")
+        ] = None,
+        start: Annotated[
+            Optional[int], Query(default=None, ge=0, description="Offset")
+        ] = None,
     ) -> GetTorrentBlockerReportsResponseDto:
         """Get Torrent Blocker Reports"""
         ...
 
-    @get("/node-plugins/torrent-blocker/stats", response_class=GetTorrentBlockerReportsStatsResponseDto)
+    @get(
+        "/node-plugins/torrent-blocker/stats",
+        response_class=GetTorrentBlockerReportsStatsResponseDto,
+    )
     async def get_torrent_blocker_reports_stats(
         self,
     ) -> GetTorrentBlockerReportsStatsResponseDto:
         """Get Torrent Blocker Reports Stats"""
         ...
 
-    @delete("/node-plugins/torrent-blocker/truncate", response_class=TruncateTorrentBlockerReportsResponseDto)
+    @delete(
+        "/node-plugins/torrent-blocker/truncate",
+        response_class=TruncateTorrentBlockerReportsResponseDto,
+    )
     async def truncate_torrent_blocker_reports(
         self,
     ) -> TruncateTorrentBlockerReportsResponseDto:

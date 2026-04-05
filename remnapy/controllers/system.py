@@ -5,8 +5,16 @@ from rapid_api_client import PydanticBody
 from remnapy.models import (
     DebugSrrMatcherRequestDto,
     DebugSrrMatcherResponseDto,
+    EncryptHappCryptoLinkRequestDto,
+    EncryptHappCryptoLinkResponseDto,
+    GetBandwidthStatsResponseDto,
     GetMetadataResponseDto,
+    GetNodesMetricsResponseDto,
+    GetNodesStatisticsResponseDto,
     GetRecapResponseDto,
+    GetRemnawaveHealthResponseDto,
+    GetStatsResponseDto,
+    GetX25519KeyPairResponseDto,
 )
 from remnapy.rapid import BaseController, get, post
 
