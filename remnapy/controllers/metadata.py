@@ -2,7 +2,8 @@ from typing import Annotated
 
 from rapid_api_client import Path
 from rapid_api_client.annotations import PydanticBody
-from remnawave.models import (
+
+from remnapy.models import (
     GetNodeMetadataResponseDto,
     GetUserMetadataResponseDto,
     UpsertNodeMetadataRequestBodyDto,
@@ -10,7 +11,7 @@ from remnawave.models import (
     UpsertUserMetadataRequestBodyDto,
     UpsertUserMetadataResponseDto,
 )
-from remnawave.rapid import BaseController, get, put
+from remnapy.rapid import BaseController, get, put
 
 
 class MetadataController(BaseController):

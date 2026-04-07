@@ -55,7 +55,6 @@ from .config_profiles import (
     DeleteConfigProfileResponseDto,
     GetAllConfigProfilesResponseDto,
     GetAllConfigProfilesResponsePaginated,
-    GetAllInboundsResponseDto,
     GetConfigProfileByUuidResponseDto,
     GetInboundsByProfileUuidResponseDto,
     InboundDto,
@@ -65,6 +64,9 @@ from .config_profiles import (
     ReorderConfigProfilesResponseDto,
     UpdateConfigProfileRequestDto,
     UpdateConfigProfileResponseDto,
+)
+from .config_profiles import (
+    GetAllInboundsResponseDto as GetAllConfigProfileInboundsResponseDto,
 )
 from .external_squads import (
     AddUsersToExternalSquadResponseDto,
@@ -95,7 +97,7 @@ from .hosts import (
     GetOneHostResponseDto,
     HostInboundData,
     HostResponseDto,
-    HostsResponseDto,  # Legacy alias  # Legacy alias
+    HostsResponseDto,  # Legacy alias
     ReorderHostItem,
     ReorderHostRequestDto,
     ReorderHostResponseDto,
@@ -112,7 +114,7 @@ from .hosts_bulk_actions import (
     SetPortToManyHostsResponseDto,
 )
 from .hwid import (
-    CreateHWIDUser,  # Legacy alias  # Legacy alias
+    CreateHWIDUser,  # Legacy alias
     CreateUserHwidDeviceRequestDto,
     CreateUserHwidDeviceResponseDto,
     DeleteUserAllHwidDeviceRequestDto,
@@ -121,9 +123,9 @@ from .hwid import (
     GetHwidStatisticsResponseDto,
     GetTopUsersByHwidDevicesResponseDto,
     GetUserHwidDevicesResponseDto,
-    HWIDDeleteRequest,  # Legacy alias  # Legacy alias
-    HWIDUserResponseDto,  # Legacy alias  # Legacy alias
-    HWIDUserResponseDtoList,  # Legacy alias  # Legacy alias
+    HWIDDeleteRequest,  # Legacy alias
+    HWIDUserResponseDto,  # Legacy alias
+    HWIDUserResponseDtoList,  # Legacy alias
     TopUserByHwidDevicesDto,
     TopUsersByHwidDevicesData,
 )
@@ -138,7 +140,7 @@ from .inbounds import (
     GetInboundsResponseDto,
     InboundResponseDto,
     InboundsByProfileData,
-    InboundsResponseDto,  # Legacy alias  # Legacy alias
+    InboundsResponseDto,  # Legacy alias
 )
 from .inbounds_bulk_actions import (
     AddInboundToNodesResponseDto,
@@ -154,19 +156,19 @@ from .infra_billing import (
     CreateInfraProviderRequestDto,
     CreateInfraProviderResponseDto,
     DeleteInfraBillingHistoryRecordByUuidResponseDto,
-    DeleteInfraBillingNodeByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraBillingNodeResponseDto)  # ПЕРЕИМЕНОВАНА (было DeleteInfraBillingNodeResponseDto)
-    DeleteInfraBillingNodeResponseDto,  # LEGACY  # LEGACY
-    DeleteInfraProviderByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraProviderResponseDto)  # ПЕРЕИМЕНОВАНА (было DeleteInfraProviderResponseDto)
-    DeleteInfraProviderResponseDto,  # LEGACY  # LEGACY
-    GetAllInfraBillingHistoryResponseDto,  # LEGACY  # LEGACY
-    GetAllInfraBillingNodesResponseDto,  # LEGACY  # LEGACY
-    GetAllInfraProvidersResponseDto,  # LEGACY  # LEGACY
+    DeleteInfraBillingNodeByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraBillingNodeResponseDto)
+    DeleteInfraBillingNodeResponseDto,  # LEGACY
+    DeleteInfraProviderByUuidResponseDto,  # ПЕРЕИМЕНОВАНА (было DeleteInfraProviderResponseDto)
+    DeleteInfraProviderResponseDto,  # LEGACY
+    GetAllInfraBillingHistoryResponseDto,  # LEGACY
+    GetAllInfraBillingNodesResponseDto,  # LEGACY
+    GetAllInfraProvidersResponseDto,  # LEGACY
     GetInfraBillingHistoryByUuidResponseDto,
-    GetInfraBillingHistoryRecordsResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingHistoryResponseDto)  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingHistoryResponseDto)
+    GetInfraBillingHistoryRecordsResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingHistoryResponseDto)
     GetInfraBillingNodeByUuidResponseDto,
-    GetInfraBillingNodesResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingNodesResponseDto)  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingNodesResponseDto)
+    GetInfraBillingNodesResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraBillingNodesResponseDto)
     GetInfraProviderByUuidResponseDto,
-    GetInfraProvidersResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraProvidersResponseDto)  # ПЕРЕИМЕНОВАНА (было GetAllInfraProvidersResponseDto)
+    GetInfraProvidersResponseDto,  # ПЕРЕИМЕНОВАНА (было GetAllInfraProvidersResponseDto)
     InfraBillingHistoryDto,
     InfraBillingNodeDto,
     InfraProviderDto,
@@ -210,15 +212,21 @@ from .ip_control import (
     FetchIpsResult,
     FetchIpsResultData,
     FetchIpsResultResponseDto,
+    FetchUsersIpsJobData,
+    FetchUsersIpsResponseDto,
+    FetchUsersIpsResult,
+    FetchUsersIpsResultData,
+    FetchUsersIpsResultResponseDto,
+    FetchUsersIpsUser,
+    FetchUsersIpsUserIp,
     TargetAllNodes,
     TargetSpecificNodes,
 )
-from .keygen import (  # Legacy alias  # Legacy alias
-    GetPubKeyResponseDto,
-    PubKeyResponseDto,
+from .keygen import GetPubKeyResponseDto, PubKeyResponseDto  # Legacy alias
+from .metadata import (
+    GetMetadataResponseDto as MetadataResponseDto,
 )
 from .metadata import (
-    GetMetadataResponseDto,
     GetNodeMetadataResponseDto,
     GetUserMetadataResponseDto,
     UpsertNodeMetadataRequestBodyDto,
@@ -271,7 +279,7 @@ from .nodes import (
     NodeResponseDto,
     NodesBulkActionsRequestDto,
     NodesBulkActionsResponseDto,
-    NodesResponseDto,  # Legacy alias  # Legacy alias
+    NodesResponseDto,  # Legacy alias
     ProfileModificationRequestDto,
     ProfileModificationResponseDto,
     ReorderNodeRequestDto,
@@ -279,7 +287,7 @@ from .nodes import (
     ResetNodeTrafficRequestDto,
     ResetNodeTrafficResponseDto,
     RestartAllNodesRequestBodyDto,
-    RestartAllNodesRequestDto,  # Legacy alias,  # Legacy alias,
+    RestartAllNodesRequestDto,  # Legacy alias,
     RestartAllNodesResponseDto,
     RestartNodeResponseDto,
     UpdateNodeRequestDto,
@@ -340,7 +348,7 @@ from .subscription import (
     GetSubscriptionByUUIDResponseDto,
     GetSubscriptionInfoResponseDto,
     RawSettings,
-    SubscriptionInfoResponseDto,  # Legacy alias  # Legacy alias
+    SubscriptionInfoResponseDto,  # Legacy alias
     UserSubscription,
 )
 from .subscription_page import (
@@ -371,7 +379,6 @@ from .subscription_request_history import (
     SubscriptionRequestHistoryStatsData,
 )
 from .subscriptions_settings import (
-    # Backward compatibility aliases
     # Backward compatibility aliases
     CustomRemarks,
     CustomRemarksDto,
@@ -440,30 +447,8 @@ from .users import (
     # Other Response DTOs
     DeleteUserResponseDto,
     DisableUserResponseDto,
-    DropByIpAddresses,
-    DropByUserUuids,
-    # Request DTOs
-    DropConnectionsRequestDto,
-    DropConnectionsResponseData,
-    DropConnectionsResponseDto,
     EmailUserResponseDto,
     EnableUserResponseDto,
-    # Data models
-    FetchIpsJobData,
-    FetchIpsNodeResult,
-    FetchIpsProgressData,
-    # Response DTOs
-    FetchIpsResponseDto,
-    FetchIpsResult,
-    FetchIpsResultData,
-    FetchIpsResultResponseDto,
-    FetchUsersIpsJobData,
-    FetchUsersIpsResponseDto,
-    FetchUsersIpsResult,
-    FetchUsersIpsResultData,
-    FetchUsersIpsResultResponseDto,
-    FetchUsersIpsUser,
-    FetchUsersIpsUserIp,
     GetAllTagsResponseDto,
     # Response DTOs - Collections
     GetAllUsersResponseDto,
@@ -484,8 +469,6 @@ from .users import (
     SubscriptionRequestsResponseData,
     TagsResponseDto,
     TagUserResponseDto,
-    TargetAllNodes,
-    TargetSpecificNodes,
     # Response DTOs - Arrays (RootModel)
     TelegramUserResponseDto,
     UpdateUserRequestDto,
@@ -631,6 +614,7 @@ __all__ = [
     "FullInboundResponseDto",
     "FullInboundStatistic",
     "FullInboundsResponseDto",
+    "GetAllInboundsResponseDto",
     "GetFullInboundsResponseDto",
     "GetInboundsResponseDto",
     "InboundResponseDto",
@@ -839,7 +823,7 @@ __all__ = [
     "CreateConfigProfileResponseDto",
     "DeleteConfigProfileResponseDto",
     "GetAllConfigProfilesResponseDto",
-    "GetAllInboundsResponseDto",
+    "GetAllConfigProfileInboundsResponseDto",
     "GetConfigProfileByUuidResponseDto",
     "GetInboundsByProfileUuidResponseDto",
     "InboundDto",
@@ -1039,7 +1023,7 @@ __all__ = [
     "FetchUsersIpsResultData",
     "DropConnectionsResponseData",
     # Metadata models
-    "GetMetadataResponseDto",
+    "MetadataResponseDto",
     "GetUserMetadataResponseDto",
     "UpsertUserMetadataRequestBodyDto",
     "UpsertUserMetadataResponseDto",

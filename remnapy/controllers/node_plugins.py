@@ -1,7 +1,8 @@
 from typing import Annotated, Optional
 
 from rapid_api_client import Path, PydanticBody, Query
-from remnawave.models import (
+
+from remnapy.models import (
     CloneNodePluginRequestDto,
     CloneNodePluginResponseDto,
     CreateNodePluginRequestDto,
@@ -19,7 +20,7 @@ from remnawave.models import (
     UpdateNodePluginRequestDto,
     UpdateNodePluginResponseDto,
 )
-from remnawave.rapid import BaseController, delete, get, patch, post
+from remnapy.rapid import BaseController, delete, get, patch, post
 
 
 class NodePluginsController(BaseController):
