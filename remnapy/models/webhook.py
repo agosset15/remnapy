@@ -16,6 +16,7 @@ from remnapy.enums import (
     TUserHwidDevicesEvents,
     TUsersStatus,
 )
+from remnapy.models.node_plugins import TorrentBlockerReportPayloadDto
 
 # ---------------- USER ---------------- #
 
@@ -392,6 +393,8 @@ class CrmEventDto(BaseModel):
 
 class TorrentBlockerReportDto(BaseModel):
     node: NodeDto
+    user: UserDto
+    report: TorrentBlockerReportPayloadDto
 
     model_config = {"alias_generator": to_camel, "populate_by_name": True}
 
@@ -416,6 +419,7 @@ class WebhookPayloadDto(BaseModel):
         LoginAttemptDto,
         UserHwidDeviceEventDto,
         BillingNodeDto,
+        TorrentBlockerReportDto,
         dict,
     ]
 
@@ -448,6 +452,8 @@ class WebhookPayloadDto(BaseModel):
             data = ErrorDto(**data_raw)
         elif event.startswith("crm."):
             data = BillingNodeDto(**data_raw)
+        elif event.startswith("torrent_blocker."):
+            data = TorrentBlockerReportDto(**data_raw)
         else:
             data = data_raw
 
