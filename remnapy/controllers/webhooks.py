@@ -7,6 +7,7 @@ from remnapy.models.webhook import (
     HwidUserDeviceDto,
     LoginAttemptDto,
     NodeDto,
+    TorrentBlockerReportDto,
     UserDto,
     UserHwidDeviceEventDto,
     WebhookPayloadDto,
@@ -149,6 +150,11 @@ class WebhookUtility:
         return event.startswith("errors.")
 
     @staticmethod
+    def is_torrent_blocker_event(event: str) -> bool:
+        """Check if event is a torrent blocker event."""
+        return event.startswith("torrent_blocker.")
+
+    @staticmethod
     def get_typed_data(
         payload: WebhookPayloadDto,
     ) -> Union[
@@ -157,6 +163,7 @@ class WebhookUtility:
         HwidUserDeviceDto,
         LoginAttemptDto,
         UserHwidDeviceEventDto,
+        TorrentBlockerReportDto,
         dict,
     ]:
         """
