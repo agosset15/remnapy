@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Annotated, List, Literal, Optional, Union
 from uuid import UUID
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Fetch IPs – step 1: start the job
@@ -83,6 +83,14 @@ class DropByUserUuids(BaseModel):
         description="List of user UUIDs whose connections should be dropped",
     )
 
+    @model_validator(mode="after")
+    def _keep_discriminator(self):
+        # ``by`` has a default, so it is "unset" unless passed explicitly.
+        # The client serializes bodies with ``exclude_unset=True``, which would
+        # strip the discriminator and make the API ignore the drop event.
+        self.__pydantic_fields_set__.add("by")
+        return self
+
 
 class DropByIpAddresses(BaseModel):
     """Drop connections from specific IP addresses"""
@@ -94,6 +102,11 @@ class DropByIpAddresses(BaseModel):
         min_length=1,
         description="List of IP addresses to disconnect",
     )
+
+    @model_validator(mode="after")
+    def _keep_discriminator(self):
+        self.__pydantic_fields_set__.add("by")
+        return self
 
 
 # Discriminated union – use `by` field as the discriminator
@@ -108,6 +121,11 @@ class TargetAllNodes(BaseModel):
 
     target: Literal["allNodes"] = "allNodes"
 
+    @model_validator(mode="after")
+    def _keep_discriminator(self):
+        self.__pydantic_fields_set__.add("target")
+        return self
+
 
 class TargetSpecificNodes(BaseModel):
     """Send the drop-connections event to specific nodes only"""
@@ -119,6 +137,11 @@ class TargetSpecificNodes(BaseModel):
         min_length=1,
         description="List of node UUIDs to target",
     )
+
+    @model_validator(mode="after")
+    def _keep_discriminator(self):
+        self.__pydantic_fields_set__.add("target")
+        return self
 
 
 # Discriminated union – use `target` field as the discriminator
