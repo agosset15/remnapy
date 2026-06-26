@@ -131,7 +131,7 @@ class UserEventDto(BaseModel):
 
 class HwidUserDeviceDto(BaseModel):
     hwid: str
-    user_uuid: UUID
+    user_id: int
     platform: Optional[str] = None
     os_version: Optional[str] = None
     device_model: Optional[str] = None
